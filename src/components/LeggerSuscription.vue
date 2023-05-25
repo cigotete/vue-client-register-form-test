@@ -29,6 +29,21 @@
             <input id="accept-toc-pdt" type="checkbox" v-model="form.field_legger_accept_tnc_pdt" required>
             {{ this.field_names.field_legger_accept_tnc_pdt }}
           </label>
+          <div>
+            <h2>Términos y Condiciones</h2>
+            <ul>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</li>
+              <li>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.</li>
+              <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+            </ul>
+
+            <h2>Política de Tratamiento de Datos</h2>
+            <ul>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</li>
+              <li>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.</li>
+              <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+            </ul>
+          </div>
 
           <button @click="submitForm" type="submit">Submit</button>
         </form>
