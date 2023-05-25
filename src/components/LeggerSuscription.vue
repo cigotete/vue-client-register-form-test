@@ -68,7 +68,7 @@ export default   {
         field_legger_promoter: 'Promotor',
         field_legger_rtc: 'RTC',
         field_legger_captain_andor_user: 'Capitan y/o usuario',
-        field_legger_accept_tnc_pdt: 'Acceptar terminos y condiciones y Politica de tratamiento de datos',
+        field_legger_accept_tnc_pdt: 'Terminos y condiciones y Politica de Tratamiento de Datos',
       },
       validationErrors: {},
     };
