@@ -164,13 +164,10 @@ export default   {
 </script>
 
 <style>
-input, select, button {
-  display: block;
-  margin: 5px 0px 10px 0px;
-}
 
-#legger-form {
-  width: 50%;
-  text-align: left;
-}
+</style>
+
+<style lang="scss">
+@import "@/styles.scss";
+
 </style>
