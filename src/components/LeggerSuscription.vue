@@ -15,7 +15,7 @@
           </li>
         </ul>
 
-        <form id="legger-form" class="legger-form" @submit="submitForm">
+        <form v-if="showForm" id="legger-form" class="legger-form" @submit="submitForm">
           <input id="client-name" type="text" :placeholder="field_names.field_legger_client_name" v-model="form.field_legger_client_name" :maxlength="255" required>    
           <input id="client-nit" type="text" :placeholder="this.field_names.field_legger_client_nit" v-model="form.field_legger_client_nit" :maxlength="255" required>
           <input id="point-name" type="text" :placeholder="this.field_names.field_legger_point_name" v-model="form.field_legger_point_name" :maxlength="255">
@@ -49,6 +49,7 @@
 
           <button type="submit">Submit</button>
         </form>
+        <div v-else>{{ successMessage }}</div>
       </section>
     </div>
   </main>
@@ -89,6 +90,8 @@ export default   {
       },
       validationErrors: {},
       errorRequest: false,
+      showForm: true,
+      successMessage: '',
     };
   },
   methods: {
@@ -161,9 +164,8 @@ export default   {
         .then(response => {
           // Check if the response data is defined
           if (response.data) {
-            // Access the data property
-            console.log(response.data);
-            // Continue with further processing
+            this.showForm = false;
+            this.successMessage = 'Formulario enviado satisfactoriamente!';
           } else {
             // Handle the case when the response data is undefined
             console.log('Response data is undefined');
