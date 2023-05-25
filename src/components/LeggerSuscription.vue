@@ -30,10 +30,13 @@
       <input id="accept-toc-pdt" type="checkbox" v-model="form.acceptTocPdt" required>
       Accept Terms and Conditions
     </label>
+
+    <button @click="submitForm" type="submit">Submit</button>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default   {
   name: 'LeggerSuscription',
   data() {
@@ -59,15 +62,86 @@ export default   {
   methods: {
     validate_alphabet_characters(value) {
       console.log(value);
-    }
+    },
+    submitForm() {
+      const data = {
+        title: [
+          {
+            value: this.form.clientName + ' - ' + this.form.clientNit,
+          },
+        ],
+        field_legger_client_name: [
+          {
+            value: this.form.clientName,
+          },
+        ],
+        field_legger_client_nit: [
+          {
+            value: this.form.clientNit,
+          },
+        ],
+        field_legger_point_name: [
+          {
+            value: this.form.pointName,
+          },
+        ],
+        field_legger_team_name: [
+          {
+            value: this.form.teamName,
+          },
+        ],
+        field_legger_cities: [
+          {
+            value: this.form.selectedCity,
+          },
+        ],
+        field_legger_promoter: [
+          {
+            value: this.form.promoterName,
+          },
+        ],
+        field_legger_rtc: [
+          {
+            value: this.form.rtc,
+          },
+        ],
+        field_legger_captain_andor_user: [
+          {
+            value: this.form.captainUser,
+          },
+        ],
+        field_legger_accept_tnc_pdt: [
+          {
+            value: this.form.acceptTocPdt,
+          },
+        ],
+        type: [
+          {
+            target_id: 'legger_suscription',
+          },
+        ],
+      };
+
+      // Make an HTTP POST request to your endpoint
+      axios
+        .post('http://drupal-legger-test.test/node?_format=json', data)
+        .then(response => {
+          // Handle the response if needed
+          console.log(response.data);
+        })
+        .catch(error => {
+          // Handle the error if needed
+          console.error(error);
+        });
+    },
   }
 };
 </script>
 
 <style>
-input, select {
+input, select, button {
   display: block;
-  margin-bottom: 10px;
+  margin: 5px 0px 10px 0px;
 }
 
 #legger-form {
