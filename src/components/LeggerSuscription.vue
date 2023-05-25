@@ -1,7 +1,6 @@
 <template>
   <main class="container-main">
     <div class="container-main__col container-main__col--left">
-      adfadfadsf
     </div>
     <div class="container-main__col container-main__col--right">
       <section class="page">
