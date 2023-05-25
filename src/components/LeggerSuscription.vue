@@ -15,7 +15,7 @@
           </li>
         </ul>
 
-        <form id="legger-form" class="legger-form">
+        <form id="legger-form" class="legger-form" @submit="submitForm">
           <input id="client-name" type="text" :placeholder="field_names.field_legger_client_name" v-model="form.field_legger_client_name" :maxlength="255" required>    
           <input id="client-nit" type="text" :placeholder="this.field_names.field_legger_client_nit" v-model="form.field_legger_client_nit" :maxlength="255" required>
           <input id="point-name" type="text" :placeholder="this.field_names.field_legger_point_name" v-model="form.field_legger_point_name" :maxlength="255">
@@ -47,7 +47,7 @@
             </ul>
           </div>
 
-          <button @click="submitForm" type="submit">Submit</button>
+          <button type="submit">Submit</button>
         </form>
       </section>
     </div>
@@ -95,7 +95,8 @@ export default   {
     validate_alphabet_characters(value) {
       console.log(value);
     },
-    submitForm() {
+    submitForm(event) {
+      event.preventDefault();
       const data = {
         title: [
           {
