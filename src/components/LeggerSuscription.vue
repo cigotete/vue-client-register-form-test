@@ -6,7 +6,9 @@
     <div class="container-main__col container-main__col--right">
       <section class="page">
         <h1>Inscripción punto de venta</h1>
-
+        <div v-if="errorRequest">
+          Se ha presentado un error, por favor intente nuevamente mas tarde.
+        </div>
         <ul  v-if="validationErrors">
           <li v-for="(error, field) in validationErrors" :key="field">
             {{ error }}
@@ -86,6 +88,7 @@ export default   {
         field_legger_accept_tnc_pdt: 'Terminos y condiciones y Politica de Tratamiento de Datos',
       },
       validationErrors: {},
+      errorRequest: false,
     };
   },
   methods: {
@@ -159,8 +162,6 @@ export default   {
           console.log(response.data);
         })
         .catch(error => {
-          // Handle the error if needed
-          console.error(error.response.data.message);
           if (error.response && error.response.data && error.response.data.message) {
             const fieldNames = this.field_names;
             let error_str = error.response.data.message;
@@ -177,6 +178,11 @@ export default   {
             // Remove the last line of the error message
             error_str = error_str.replace(/\n$/, '');
             this.validationErrors = error_str.split('\n');
+          } else if (error.request) {
+            // The request was made but no response was received
+            console.error("error.request", error.request);
+            // Display a custom error message indicating the network issue
+            this.errorRequest = "Error de conexión, por favor intente mas tarde.";
           } else {
             console.error(error);
           }
