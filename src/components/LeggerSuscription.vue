@@ -147,8 +147,21 @@ export default   {
           // Handle the error if needed
           console.error(error.response.data.message);
           if (error.response && error.response.data && error.response.data.message) {
-            this.validationErrors = error.response.data.message.split("\n");
-            console.log(this.validationErrors);
+            const fieldNames = this.field_names;
+            let error_str = error.response.data.message;
+            // Replace the field names in the error message
+            Object.keys(fieldNames).forEach(function (key) {
+              var regex = new RegExp(key, 'g');
+              error_str = error_str.replace(regex, fieldNames[key]);
+            });
+            // Remove the first line of the error message
+            const remove_str = 'Unprocessable Entity: validation failed.\n';
+            if (error_str.includes(remove_str)) {
+              error_str = error_str.replace(remove_str, '');
+            }
+            // Remove the last line of the error message
+            error_str = error_str.replace(/\n$/, '');
+            this.validationErrors = error_str.split('\n');
           } else {
             console.error(error);
           }
