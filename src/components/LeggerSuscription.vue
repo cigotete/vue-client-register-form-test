@@ -158,8 +158,15 @@ export default   {
       axios
         .post('http://drupal-legger-test.test/node?_format=json', data)
         .then(response => {
-          // Handle the response if needed
-          console.log(response.data);
+          // Check if the response data is defined
+          if (response.data) {
+            // Access the data property
+            console.log(response.data);
+            // Continue with further processing
+          } else {
+            // Handle the case when the response data is undefined
+            console.log('Response data is undefined');
+          }
         })
         .catch(error => {
           if (error.response && error.response.data && error.response.data.message) {
