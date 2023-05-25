@@ -47,7 +47,7 @@
             </ul>
           </div>
 
-          <button type="submit">Submit</button>
+          <button type="submit" @click="cleanErrors()">Submit</button>
         </form>
         <div v-else>{{ successMessage }}</div>
       </section>
@@ -97,6 +97,10 @@ export default   {
   methods: {
     validate_alphabet_characters(value) {
       console.log(value);
+    },
+    cleanErrors() {
+      this.validationErrors = {};
+      this.errorRequest = false;
     },
     submitForm(event) {
       event.preventDefault();
