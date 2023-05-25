@@ -1,45 +1,40 @@
 <template>
-  <div v-if="validationErrors">
-  <ul>
-    <li v-for="(error, field) in validationErrors" :key="field">
-      {{ error }}
-    </li>
-  </ul>
-</div>
-  <div id="legger-form">
-    <label for="client-name">{{ this.field_names.field_legger_client_name }}</label>
-    <input id="client-name" type="text" v-model="form.field_legger_client_name" :maxlength="255" required>
-  
-    <label for="client-nit">{{ this.field_names.field_legger_client_nit }}</label>
-    <input id="client-nit" type="text" v-model="form.field_legger_client_nit" :maxlength="255" required>
-  
-    <label for="point-name">{{ this.field_names.field_legger_point_name }}</label>
-    <input id="point-name" type="text" v-model="form.field_legger_point_name" :maxlength="255">
-  
-    <label for="team-name">{{ this.field_names.field_legger_team_name }}</label>
-    <input id="team-name" type="text" v-model="form.field_legger_team_name" :maxlength="255">
-  
-    <label for="cities">{{ this.field_names.field_legger_cities }}</label>
-    <select id="cities" v-model="form.field_legger_cities">
-      <option v-for="city in cities" :key="city.key" :value="city.key">{{ city.value }}</option>
-    </select>
-  
-    <label for="promoter-name">{{ this.field_names.field_legger_promoter }}</label>
-    <input id="promoter-name" type="text" v-model="form.field_legger_promoter" :maxlength="255">
-  
-    <label for="rtc">{{ this.field_names.field_legger_rtc }}</label>
-    <input id="rtc" type="text" v-model="form.field_legger_rtc" :maxlength="255">
-  
-    <label for="captain-user">{{ this.field_names.field_legger_captain_andor_user }}</label>
-    <input id="captain-user" type="text" v-model="form.field_legger_captain_andor_user" :maxlength="255">
-  
-    <label for="accept-toc-pdt">
-      <input id="accept-toc-pdt" type="checkbox" v-model="form.field_legger_accept_tnc_pdt" required>
-      {{ this.field_names.field_legger_accept_tnc_pdt }}
-    </label>
+  <main class="container-main">
+    <div class="container-main__col container-main__col--left">
+      adfadfadsf
+    </div>
+    <div class="container-main__col container-main__col--right">
+      <section class="page">
+        <h1>Inscripción punto de venta</h1>
 
-    <button @click="submitForm" type="submit">Submit</button>
-  </div>
+        <ul  v-if="validationErrors">
+          <li v-for="(error, field) in validationErrors" :key="field">
+            {{ error }}
+          </li>
+        </ul>
+
+        <form id="legger-form" class="legger-form">
+          <input id="client-name" type="text" :placeholder="field_names.field_legger_client_name" v-model="form.field_legger_client_name" :maxlength="255" required>    
+          <input id="client-nit" type="text" :placeholder="this.field_names.field_legger_client_nit" v-model="form.field_legger_client_nit" :maxlength="255" required>
+          <input id="point-name" type="text" :placeholder="this.field_names.field_legger_point_name" v-model="form.field_legger_point_name" :maxlength="255">
+          <input id="team-name" type="text" :placeholder="this.field_names.field_legger_team_name" v-model="form.field_legger_team_name" :maxlength="255">
+          <select id="cities" v-model="form.field_legger_cities">
+            <option value="" disabled>{{this.field_names.field_legger_cities}}</option>
+            <option v-for="city in cities" :key="city.key" :value="city.key">{{ city.value }}</option>
+          </select>
+          <input id="promoter-name" type="text" :placeholder="this.field_names.field_legger_promoter" v-model="form.field_legger_promoter" :maxlength="255">    
+          <input id="rtc" type="text" :placeholder="this.field_names.field_legger_rtc" v-model="form.field_legger_rtc" :maxlength="255">    
+          <input id="captain-user" type="text" :placeholder="this.field_names.field_legger_captain_andor_user" v-model="form.field_legger_captain_andor_user" :maxlength="255">    
+          <label for="accept-toc-pdt">
+            <input id="accept-toc-pdt" type="checkbox" v-model="form.field_legger_accept_tnc_pdt" required>
+            {{ this.field_names.field_legger_accept_tnc_pdt }}
+          </label>
+
+          <button @click="submitForm" type="submit">Submit</button>
+        </form>
+      </section>
+    </div>
+  </main>
 </template>
 
 <script>
