@@ -1,4 +1,11 @@
 <template>
+  <div v-if="validationErrors">
+  <ul>
+    <li v-for="(error, field) in validationErrors" :key="field">
+      {{ error }}
+    </li>
+  </ul>
+</div>
   <div id="legger-form">
     <label for="client-name">{{ this.field_names.field_legger_client_name }}</label>
     <input id="client-name" type="text" v-model="form.field_legger_client_name" :maxlength="255" required>
@@ -143,7 +150,13 @@ export default   {
         })
         .catch(error => {
           // Handle the error if needed
-          console.error(error);
+          console.error(error.response.data.message);
+          if (error.response && error.response.data && error.response.data.message) {
+            this.validationErrors = error.response.data.message.split("\n");
+            console.log(this.validationErrors);
+          } else {
+            console.error(error);
+          }
         });
     },
   }
