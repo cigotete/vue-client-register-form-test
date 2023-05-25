@@ -1,34 +1,34 @@
 <template>
   <div id="legger-form">
-    <label for="client-name">Client Name</label>
-    <input id="client-name" type="text" v-model="form.clientName" :maxlength="255" required>
+    <label for="client-name">{{ this.field_names.field_legger_client_name }}</label>
+    <input id="client-name" type="text" v-model="form.field_legger_client_name" :maxlength="255" required>
   
-    <label for="client-nit">Client NIT</label>
-    <input id="client-nit" type="text" v-model="form.clientNit" :maxlength="255" required>
+    <label for="client-nit">{{ this.field_names.field_legger_client_nit }}</label>
+    <input id="client-nit" type="text" v-model="form.field_legger_client_nit" :maxlength="255" required>
   
-    <label for="point-name">Point Name</label>
-    <input id="point-name" type="text" v-model="form.pointName" :maxlength="255">
+    <label for="point-name">{{ this.field_names.field_legger_point_name }}</label>
+    <input id="point-name" type="text" v-model="form.field_legger_point_name" :maxlength="255">
   
-    <label for="team-name">Team Name</label>
-    <input id="team-name" type="text" v-model="form.teamName" :maxlength="255">
+    <label for="team-name">{{ this.field_names.field_legger_team_name }}</label>
+    <input id="team-name" type="text" v-model="form.field_legger_team_name" :maxlength="255">
   
-    <label for="cities">Cities</label>
-    <select id="cities" v-model="form.selectedCity">
+    <label for="cities">{{ this.field_names.field_legger_cities }}</label>
+    <select id="cities" v-model="form.field_legger_cities">
       <option v-for="city in cities" :key="city.key" :value="city.key">{{ city.value }}</option>
     </select>
   
-    <label for="promoter-name">Promoter Name</label>
-    <input id="promoter-name" type="text" v-model="form.promoterName" :maxlength="255">
+    <label for="promoter-name">{{ this.field_names.field_legger_promoter }}</label>
+    <input id="promoter-name" type="text" v-model="form.field_legger_promoter" :maxlength="255">
   
-    <label for="rtc">RTC</label>
-    <input id="rtc" type="text" v-model="form.rtc" :maxlength="255">
+    <label for="rtc">{{ this.field_names.field_legger_rtc }}</label>
+    <input id="rtc" type="text" v-model="form.field_legger_rtc" :maxlength="255">
   
-    <label for="captain-user">Captain and/or User</label>
-    <input id="captain-user" type="text" v-model="form.captainUser" :maxlength="255">
+    <label for="captain-user">{{ this.field_names.field_legger_captain_andor_user }}</label>
+    <input id="captain-user" type="text" v-model="form.field_legger_captain_andor_user" :maxlength="255">
   
     <label for="accept-toc-pdt">
-      <input id="accept-toc-pdt" type="checkbox" v-model="form.acceptTocPdt" required>
-      Accept Terms and Conditions
+      <input id="accept-toc-pdt" type="checkbox" v-model="form.field_legger_accept_tnc_pdt" required>
+      {{ this.field_names.field_legger_accept_tnc_pdt }}
     </label>
 
     <button @click="submitForm" type="submit">Submit</button>
@@ -42,21 +42,33 @@ export default   {
   data() {
     return {
       form: {
-        clientName: '',
-        clientNit: '',
-        pointName: '',
-        teamName: '',
-        selectedCity: '',
-        promoterName: '',
-        rtc: '',
-        captainUser: '',
-        acceptTocPdt: false
+        field_legger_client_name: '',
+        field_legger_client_nit: '',
+        field_legger_point_name: '',
+        field_legger_team_name: '',
+        field_legger_cities: '',
+        field_legger_promoter: '',
+        field_legger_rtc: '',
+        field_legger_captain_andor_user: '',
+        field_legger_accept_tnc_pdt: false,
       },
       cities: [
         { key: 'bogota', value: 'Bogotá' },
         { key: 'medellin', value: 'Medellín' },
         { key: 'cali', value: 'Cali' }
-      ]
+      ],
+      field_names: {
+        field_legger_client_name: 'Nombre del cliente',
+        field_legger_client_nit: 'NIT',
+        field_legger_point_name: 'Nombre del punto',
+        field_legger_team_name: 'Nombre del equipo',
+        field_legger_cities: 'Ciudad',
+        field_legger_promoter: 'Promotor',
+        field_legger_rtc: 'RTC',
+        field_legger_captain_andor_user: 'Capitan y/o usuario',
+        field_legger_accept_tnc_pdt: 'Acceptar terminos y condiciones y Politica de tratamiento de datos',
+      },
+      validationErrors: {},
     };
   },
   methods: {
@@ -67,52 +79,52 @@ export default   {
       const data = {
         title: [
           {
-            value: this.form.clientName + ' - ' + this.form.clientNit,
+            value: this.form.field_legger_client_name + ' - ' + this.form.field_legger_client_nit,
           },
         ],
         field_legger_client_name: [
           {
-            value: this.form.clientName,
+            value: this.form.field_legger_client_name,
           },
         ],
         field_legger_client_nit: [
           {
-            value: this.form.clientNit,
+            value: this.form.field_legger_client_nit,
           },
         ],
         field_legger_point_name: [
           {
-            value: this.form.pointName,
+            value: this.form.field_legger_point_name,
           },
         ],
         field_legger_team_name: [
           {
-            value: this.form.teamName,
+            value: this.form.field_legger_team_name,
           },
         ],
         field_legger_cities: [
           {
-            value: this.form.selectedCity,
+            value: this.form.field_legger_cities,
           },
         ],
         field_legger_promoter: [
           {
-            value: this.form.promoterName,
+            value: this.form.field_legger_promoter,
           },
         ],
         field_legger_rtc: [
           {
-            value: this.form.rtc,
+            value: this.form.field_legger_rtc,
           },
         ],
         field_legger_captain_andor_user: [
           {
-            value: this.form.captainUser,
+            value: this.form.field_legger_captain_andor_user,
           },
         ],
         field_legger_accept_tnc_pdt: [
           {
-            value: this.form.acceptTocPdt,
+            value: this.form.field_legger_accept_tnc_pdt,
           },
         ],
         type: [
