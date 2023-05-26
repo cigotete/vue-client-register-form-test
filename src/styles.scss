@@ -92,6 +92,13 @@ section {
   justify-content: center;
 
   background: #EDEFF2;
+  @media (max-width: 600px) {
+    margin-top: -40px;
+  }
+
+  @media (min-width: 601px) {
+      margin-top: 80px;
+  }
 }
 
 .error {
