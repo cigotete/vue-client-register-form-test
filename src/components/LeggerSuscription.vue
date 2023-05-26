@@ -5,8 +5,8 @@
     <div class="container-main__col container-main__col--right">
       <section class="page">
         <h1>Inscripción punto de venta</h1>
-        <p v-if="errorRequest">Se ha presentado un error, por favor intente nuevamente mas tarde.</p>
-        <ul  v-if="validationErrors"><li v-for="(error, field) in validationErrors" :key="field">{{ error }}</li></ul>
+        <p class="error" v-if="errorRequest">Se ha presentado un error, por favor intente nuevamente mas tarde.</p>
+        <ul class="error" v-if="validationErrors"><li v-for="(error, field) in validationErrors" :key="field">{{ error }}</li></ul>
 
         <form v-if="showForm" id="form-legger" class="form-legger" @submit="submitForm">
           <input id="client-name" type="text" :placeholder="field_names.field_legger_client_name" v-model="form.field_legger_client_name" :maxlength="255" required>    
