@@ -5,16 +5,10 @@
     <div class="container-main__col container-main__col--right">
       <section class="page">
         <h1>Inscripción punto de venta</h1>
-        <div v-if="errorRequest">
-          Se ha presentado un error, por favor intente nuevamente mas tarde.
-        </div>
-        <ul  v-if="validationErrors">
-          <li v-for="(error, field) in validationErrors" :key="field">
-            {{ error }}
-          </li>
-        </ul>
+        <p v-if="errorRequest">Se ha presentado un error, por favor intente nuevamente mas tarde.</p>
+        <ul  v-if="validationErrors"><li v-for="(error, field) in validationErrors" :key="field">{{ error }}</li></ul>
 
-        <form v-if="showForm" id="legger-form" class="legger-form" @submit="submitForm">
+        <form v-if="showForm" id="form-legger" class="form-legger" @submit="submitForm">
           <input id="client-name" type="text" :placeholder="field_names.field_legger_client_name" v-model="form.field_legger_client_name" :maxlength="255" required>    
           <input id="client-nit" type="text" :placeholder="this.field_names.field_legger_client_nit" v-model="form.field_legger_client_nit" :maxlength="255" required>
           <input id="point-name" type="text" :placeholder="this.field_names.field_legger_point_name" v-model="form.field_legger_point_name" :maxlength="255">
@@ -25,28 +19,22 @@
           </select>
           <input id="promoter-name" type="text" :placeholder="this.field_names.field_legger_promoter" v-model="form.field_legger_promoter" :maxlength="255">    
           <input id="rtc" type="text" :placeholder="this.field_names.field_legger_rtc" v-model="form.field_legger_rtc" :maxlength="255">    
-          <input id="captain-user" type="text" :placeholder="this.field_names.field_legger_captain_andor_user" v-model="form.field_legger_captain_andor_user" :maxlength="255">    
-          <label for="accept-toc-pdt">
-            <input id="accept-toc-pdt" type="checkbox" v-model="form.field_legger_accept_tnc_pdt" required>
-            {{ this.field_names.field_legger_accept_tnc_pdt }}
-          </label>
-          <div>
-            <h2>Términos y Condiciones</h2>
+          <input id="captain-user" type="text" :placeholder="this.field_names.field_legger_captain_andor_user" v-model="form.field_legger_captain_andor_user" :maxlength="255">
+
+          <div class="form-legger__check">
+            <label for="accept-toc-pdt" class="form-legger__check-lbl">
+              <input id="accept-toc-pdt" class="form-legger__check-input" type="checkbox" v-model="form.field_legger_accept_tnc_pdt" required>
+              {{ this.field_names.field_legger_accept_tnc_pdt }}
+            </label>
             <ul>
               <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</li>
               <li>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.</li>
               <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
             </ul>
 
-            <h2>Política de Tratamiento de Datos</h2>
-            <ul>
-              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</li>
-              <li>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.</li>
-              <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
-            </ul>
           </div>
 
-          <button type="submit" @click="cleanErrors()">Submit</button>
+          <button class="form-legger__btn" type="submit" @click="cleanErrors()">Submit</button>
         </form>
         <div v-else>{{ successMessage }}</div>
       </section>
