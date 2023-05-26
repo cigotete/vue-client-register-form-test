@@ -7,9 +7,9 @@ body {
     margin: 0;
     width: 100%;
     height: 100%;
-
     color: #777;
     font-family: 'PT Sans';
+    background: url('./../assets/img/bg-3.png') no-repeat, url('./../assets/img/bg-1.jpg') repeat;
 }
 
 // Elements
@@ -51,7 +51,6 @@ button {
 // Layout
 
 .container-main {
-    background:  url('./../assets/img/bg-3.png') no-repeat, url('./../assets/img/bg-1.jpg') no-repeat;
     background-size: cover, cover;
     background-position: center center, center center;
     display: flex;
@@ -66,7 +65,7 @@ button {
     }
     &__col--left {
         background: url('./../assets/img/bg-2.png') no-repeat;
-        background-position: center center;
+        background-position: center -10px;
         background-size: contain;
         flex-basis: 100%;
         @media screen and (min-width: 768px) {
