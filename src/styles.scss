@@ -21,6 +21,11 @@ button {
     padding: 0.5rem 1rem;
   }
 
+  button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
+
   ul {
     list-style: none;
     padding: 0;
