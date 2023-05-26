@@ -4,7 +4,7 @@
     </div>
     <div class="container-main__col container-main__col--right">
       <section class="page">
-        <h1>Inscripción punto de venta</h1>
+        <h1>Inscripción punto de venta. {{ getParameter('var1') }}</h1>
         <p class="error" v-if="errorRequest">Se ha presentado un error, por favor intente nuevamente mas tarde.</p>
         <ul class="error" v-if="validationErrors"><li v-for="(error, field) in validationErrors" :key="field">{{ error }}</li></ul>
 
@@ -89,6 +89,10 @@ export default   {
     cleanErrors() {
       this.validationErrors = {};
       this.errorRequest = false;
+    },
+    getParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
     },
     submitForm(event) {
       event.preventDefault();
