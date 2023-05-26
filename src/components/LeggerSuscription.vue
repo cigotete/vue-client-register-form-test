@@ -46,7 +46,7 @@
             </ul>
           </div>
 
-          <button type="submit" @click="cleanErrors()">Submit</button>
+          <button type="submit" @click="cleanErrors()" :disabled="isSubmitting">Submit</button>
         </form>
         <div v-else>{{ successMessage }}</div>
       </section>
@@ -91,6 +91,7 @@ export default   {
       errorRequest: false,
       showForm: true,
       successMessage: '',
+      isSubmitting: false,
     };
   },
   methods: {
@@ -103,6 +104,12 @@ export default   {
     },
     submitForm(event) {
       event.preventDefault();
+      // Prevent double submission
+      if (this.isSubmitting) {
+        return;
+      }
+      // Disable the submit button
+      this.isSubmitting = true;
       const data = {
         title: [
           {
@@ -169,6 +176,7 @@ export default   {
           if (response.data) {
             this.showForm = false;
             this.successMessage = 'Formulario enviado satisfactoriamente!';
+            this.isSubmitting = false;
           } else {
             // Handle the case when the response data is undefined
             console.log('Response data is undefined');
@@ -191,6 +199,7 @@ export default   {
             // Remove the last line of the error message
             error_str = error_str.replace(/\n$/, '');
             this.validationErrors = error_str.split('\n');
+            this.isSubmitting = false;
           } else if (error.request) {
             // The request was made but no response was received
             console.error("error.request", error.request);
