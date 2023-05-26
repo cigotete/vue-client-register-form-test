@@ -8,14 +8,46 @@ body {
     width: 100%;
     height: 100%;
 
-    color: #C9D0DB;
+    color: #777;
+    font-family: 'PT Sans';
 }
+
+// Elements
+
+button {
+    background: #49157E;
+    border: 1px solid #49157E;
+    border-radius: 0.75rem;
+    padding: 0.5rem 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  input, select {
+    display: block;
+    margin-bottom: 0.6rem;
+    padding: 1rem 1rem;
+    width: 100%;
+
+    border-radius: 0.75rem;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+  }
+
+  ::placeholder {
+    color: #777;
+  }
+
 
 // Layout
 
 .container-main {
-    background: url('./../assets/img/bg-1.jpg') no-repeat, url('./../assets/img/bg-3.png') no-repeat;
-    background-size: cover, contain;
+    background:  url('./../assets/img/bg-3.png') no-repeat, url('./../assets/img/bg-1.jpg') no-repeat;
+    background-size: cover, cover;
     background-position: center center, center center;
     display: flex;
     flex-wrap: wrap;
@@ -41,10 +73,10 @@ body {
         display: flex;
         align-items: center;
         flex-basis: 100%;
-        margin-left: 2%;
-        margin-right: 2%;
+        margin-right: 3rem;
+        margin-left: 3rem;
         @media screen and (min-width: 768px) {
-            flex-basis: 40%;
+            flex-basis: 30%;
         }
 
     }
@@ -60,24 +92,38 @@ section {
 
 // Form
 
-.legger-form {
+.form-legger {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  &__btn {
+    color: #FFF;
+    width: 80%;
+    margin-top: 2rem;
+
+  }
+  &__check {
+    display: inline-flex;
+    height: 2rem;
+    overflow-y: auto;
+
+    color: #49157E;
+  }
+  &__check {
+    color: #49157E;
+    height: 5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
+  }
+  &__check-input {
+    width: 16px;
+    margin-right: 0.8rem;
+    border: 1px solid #777;
+  }
+  &__check-lbl {
+    display: inline-flex;
+  }
 }
-button {
-    background: #49157E;
-    border: 1px solid #49157E;
-    border-radius: 0.75rem;
-    padding: 0.5rem 1rem;
-  }
-
-  input, select {
-    display: block;
-    margin-bottom: 0.6rem;
-    padding: 1rem 1rem;
-    width: 100%;
-
-    border-radius: 0.75rem;
-    background: #FFFFFF;
-    border: 1px solid #FFFFFF;
-  }
