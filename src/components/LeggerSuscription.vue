@@ -162,7 +162,7 @@ export default   {
 
       // Make an HTTP POST request to your endpoint
       axios
-        .post('http://drupal-legger-test.test/node?_format=json', data)
+        .post('http://drupal-legger-testing.test/node?_format=json', data)
         .then(response => {
           // Check if the response data is defined
           if (response.data) {
